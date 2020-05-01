@@ -34,3 +34,41 @@ def displayInventory(inventory):
 displayInventory(stuff)
 addToInventory(stuff, dragon_loot)
 displayInventory(stuff)
+
+
+"""
+OUTPUT:
+Inventory:
+3 Rope
+7 Torch
+2 Knife
+3 Soup
+2 Bread
+6 Water
+378 Gold Coin
+1226 Bronze Coin
+
+Total number of items: 1627
+Added one Gold Coin
+Added one Gold Coin
+Added one Gold Coin
+Added one Bronze Coin
+Added one Bronze Coin
+Added one Rope
+Added one NEW Dragon Claw
+Added one Dragon Claw
+Inventory:
+4 Rope
+7 Torch
+2 Knife
+3 Soup
+2 Bread
+6 Water
+381 Gold Coin
+1228 Bronze Coin
+2 Dragon Claw
+
+Total number of items: 1635
+
+Process finished with exit code 0
+"""
