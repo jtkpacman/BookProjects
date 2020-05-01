@@ -18,6 +18,7 @@ game_round = 0
 game_won = False
 mark_acceptable = False
 
+
 # Print the board.
 def printBoard(board):
     print(board["top_left"] + " | " + board["top_mid"] + " | " + board["top_right"] + "\n" +
@@ -120,29 +121,14 @@ while not game_won:
           "The bottom right marker is number 9... Where would you like to place\n" +
           "a marker at?..")
 
-
     while True:
-        """ # Having a bit of trouble with this area, TODO: Work out bugs #
-        while not mark_acceptable:
-            try:
-                mark_position = int(input())
-            except ValueError:
-                print("Please use an available integer, 1-9")
+        space = int(input())
 
-            if 9 < mark_position < 0:
-                mark_position = 0
-                print("The integer was above 9 or below 0, please try again!")
-            elif 9 > mark_position > 0:
-                mark_acceptable = True
-        """
-
-        if the_board[board_key[mark_position]] != ' ':
+        if the_board[board_key[space]] != ' ':
             print("Please pick another location.\n" +
                   "This one has been marked already.")
-        elif the_board[board_key[mark_position]] == ' ':
-            markBoard(the_board, mark_position, current_player)
-            mark_position = 0
-            mark_acceptable = False
+        elif the_board[board_key[space]] == ' ':
+            markBoard(the_board, space, current_player)
             break
         else:
             print("There has been an issue.")
