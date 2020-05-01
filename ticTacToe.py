@@ -13,10 +13,8 @@ board_key = {1: "top_left", 2: "top_mid", 3: "top_right",
              7: "bot_left", 8: "bot_mid", 9: "bot_right"}
 
 current_player = 'X'
-mark_position = 0
 game_round = 0
 game_won = False
-mark_acceptable = False
 
 
 # Print the board.
@@ -26,6 +24,17 @@ def printBoard(board):
           board["mid_left"] + " | " + board["mid_mid"] + " | " + board["mid_right"] + "\n" +
           "- + - + -" + "\n" +
           board["bot_left"] + " | " + board["bot_mid"] + " | " + board["bot_right"])
+
+
+# Validate the mark before marking the board.
+def validateMark(mark):
+    mark = int(mark)
+
+    if 0 < mark < 10:
+        return True
+    else:
+        print("Please use a value between 1-9")
+        return False
 
 
 # Mark the board.
@@ -121,14 +130,21 @@ while not game_won:
           "The bottom right marker is number 9... Where would you like to place\n" +
           "a marker at?..")
 
-    while True:
-        space = int(input())
+    result = False
+    space = ""
+    while not result:
+        space = input()
+        try:
+            result = validateMark(space)
+        except ValueError:
+            print("Please use a number.")
 
-        if the_board[board_key[space]] != ' ':
+    while True:
+        if the_board[board_key[int(space)]] != ' ':
             print("Please pick another location.\n" +
                   "This one has been marked already.")
-        elif the_board[board_key[space]] == ' ':
-            markBoard(the_board, space, current_player)
+        elif the_board[board_key[int(space)]] == ' ':
+            markBoard(the_board, int(space), current_player)
             break
         else:
             print("There has been an issue.")
@@ -147,3 +163,6 @@ while not game_won:
         current_player = 'X'
     else:
         current_player = 'X'
+
+    # Reset validation results.
+    result = False
